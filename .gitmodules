@@ -7,3 +7,6 @@
 [submodule "lib/layout"]
 	path = lib/layout
 	url = https://github.com/enyojs/layout.git
+[submodule "lib/js-expression-eval"]
+	path = lib/js-expression-eval
+	url = https://github.com/silentmatt/js-expression-eval

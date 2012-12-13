@@ -1,17 +1,22 @@
 enyo.kind({
-	name: "App",
-	kind: "FittableRows",
-	fit: true,
-	components:[
-		{kind: "onyx.Toolbar", content: "Hello World"},
-		{kind: "enyo.Scroller", fit: true, components: [
-			{name: "main", classes: "nice-padding", allowHtml: true}
-		]},
-		{kind: "onyx.Toolbar", components: [
-			{kind: "onyx.Button", content: "Tap me", ontap: "helloWorldTap"}
-		]}
-	],
-	helloWorldTap: function(inSender, inEvent) {
-		this.$.main.addContent("The button was tapped.<br/>");
-	}
+    name: "ex.Console",
+    kind: "Control",
+    fit:true,
+    handlers:{
+        onChangePrompt:"promptChanged"
+    },
+    components: [
+        {name: "console", kind: "cli.CommandLine", classes:"enyo-fit", onCommand: "inspectCommand", commands: [
+            {kind: "ex.Calc"},
+            {kind: "google.Search"}
+        ]}
+    ],
+    create:function() {
+        this.inherited(arguments);
+        this.$.console.execCommand("help");
+    },
+    promptChanged:function(source, event) {
+        this.$.console.setPrompt(event.prompt+">");
+    },
+    inspectCommand: function(source, command) {}
 });
