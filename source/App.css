@@ -5,11 +5,11 @@ BODY {
 .cursor {
     position:absolute;
     top:0em;
-    border-bottom:2px solid black;
+    border-bottom:4px solid black;
     height:1em;
 }
 
 .cursor.insert {
-    border-bottom:4px solid black
+    border-bottom:2px solid black
 }
 ​

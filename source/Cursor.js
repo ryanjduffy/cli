@@ -5,7 +5,7 @@ enyo.kind({
     published:{
         size:0.625,
         position:0,
-        insert:false
+        insert:true
     },
     create:function() {
         this.inherited(arguments);
