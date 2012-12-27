@@ -2,15 +2,23 @@ enyo.kind({
     name:"cli.Cursor",
     kind:"Control",
     classes:"cursor",
+    content:"&nbsp;",
+    allowHtml:true,
     published:{
-        size:0.625,
         position:0,
-        insert:true
+        insert:false
     },
     create:function() {
         this.inherited(arguments);
-        this.sizeChanged();
         this.insertChanged();
+    },
+    rendered:function() {
+        this.inherited(arguments);
+        if(this.hasNode()) {
+            this.size = this.getBounds().width;
+            this.applyStyle("width", this.size+"px");
+            this.positionChanged();
+        }
     },
     insertChanged:function() {
         this.addRemoveClass("insert", this.insert);
@@ -18,12 +26,8 @@ enyo.kind({
         this.show();
         this.animate();
     },
-    sizeChanged:function() {
-        this.applyStyle("width", this.size+"em");
-        this.positionChanged();
-    },
     positionChanged:function() {
-        this.applyStyle("left", this.position*this.size + "em");
+        this.applyStyle("left", this.position*this.size + "px");
         
         this.show();
         this.animate();
