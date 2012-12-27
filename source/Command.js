@@ -3,6 +3,7 @@ enyo.kind({
     kind: "Component",
     events: {
         onRegisterCommand:"",
+        onUnregisterCommand:"",
         onCommandResponse: "",
         onCommandError: ""
     },
@@ -11,6 +12,10 @@ enyo.kind({
         if(this.command) {
             this.doRegisterCommand({command:this.command, handler:this});
         }
+    },
+    destroy:function() {
+        this.doUnregisterCommand({command:this.command});
+        this.inherited(arguments);
     },
     execute: function(sender, event) {
         if (!this.command || (this.command && this.command === event.command)) {
