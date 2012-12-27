@@ -1,0 +1,9 @@
+enyo.depends(
+    "$lib/layout",
+    "$lib/onyx",
+    "$lib/js-expression-eval/parser.js",
+    "calc.js",
+    "google.js",
+    "App.css",
+    "App.js"
+);
